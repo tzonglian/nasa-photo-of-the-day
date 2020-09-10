@@ -19,23 +19,28 @@ export default function App(){
   }, [])
 
 
-
   return (
     <div className="App">
       <div className='backgroundImage'
-        style={{backgroundImage: `url(${photoData.url})`,
-           }}>
-          <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-          </p>
+        style={{backgroundImage: `url(${photoData.url})`, }}
+        alt='NASA Picture of the Day'>
+
+      <div className='allText'>
+        <h3>NASA's Astronomy Picture of the Day<br></br>{photoData.date}</h3>
+
+        <h1>{photoData.title}</h1>
+        <p> {
+          photoData.explanation} </p>
       </div>
-      {/* <img src={photoData.url} alt="NASA Photo of the Day" />  */}
-      
       <button onClick={() => {
         }}>
         Test button
       </button>
+
+      </div>
+      
+      {/* <img src={photoData.url} alt="NASA Photo of the Day" />  */}
+      
       
     </div>
   );
