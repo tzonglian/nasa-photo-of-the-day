@@ -1,12 +1,20 @@
 
 import React from 'react';
 
-export default function Text(date,title,explanation){
+// const textToRemove = ""
+// const removeText = ()
+
+export default function Text({date,title,explanation}){
     return(
         <div className='allText'>
+          <header className='top-sect'>
             <h3>NASA's Astronomy Picture of the Day<br></br>{date}</h3>
             <h1>{title}</h1> 
-            <p> {explanation} </p>
+          </header>
+            <article className='bottom-sect'>
+            <p> {
+                explanation} </p>
+            </article>
         </div>
     )
 }
