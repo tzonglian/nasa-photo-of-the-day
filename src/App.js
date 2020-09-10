@@ -6,12 +6,21 @@ import "./App.css";
 import Text from './Text.js'
 import {API_KEY, BASE_URL} from './Constants.js'
 
+const kf = keyframes`
+33% {
+  transform: scale(.8);
+}
+66% {
+  transform: scale(1.08);
+}
+`
+
 const StyledApp = styled.div` 
-/* child component, component being used */
-    /* transition: all .2s ease-in-out; */
-    /* opacity: {visibleText}?  */
+/* child component of App, component being used */
     .allText {
       opacity: ${pr => pr.visibleText? '1' : '0'};
+      transition: all .3s ease-in-out;
+      animation: ${kf} 2s;
     }
   `
 
@@ -21,19 +30,11 @@ export default function App(){
 
   const makeVisible = () => {
     setVisibleText(!visibleText)
-    // console.log('visibleText: ',visibleText)
-
-    // if (visibleText === true){
-    //   // set opacity to 1
-    //   return ('Make Text Transparent')}
-    // else {
-    //   // set opacity to 0
-    //   return ('Make Text Visible')} 
   }
 
   useEffect(() => {
-    axios.get(`${BASE_URL}?${API_KEY}&date=2020-09-10`)
-    // to change date: &date=2020-09-10
+    axios.get(`${BASE_URL}?${API_KEY}`)
+    // to change date, add to url: &date=2020-09-10
       .then (res => {
         setPhotoData(res.data)
         console.log(res.data)
@@ -44,10 +45,10 @@ export default function App(){
   }, [])
 
   
-
   return (
     <StyledApp className="App" visibleText={visibleText}> 
-    {/* child of App, fed prop of visibleText, component declared*/}
+    {/* child component of App declared here, fed prop of visibleText */}
+
       <div className='backgroundImage'
         style={{backgroundImage: `url(${photoData.url})`, }}
         alt='NASA Picture of the Day'> 
@@ -60,9 +61,7 @@ export default function App(){
         <button onClick={makeVisible}>
           {visibleText ? 'Make Text Invisible': 'Make Text Visible'}
         </button>
-      
       </div>
-
 
     </StyledApp>
   );

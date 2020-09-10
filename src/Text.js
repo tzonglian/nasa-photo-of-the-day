@@ -1,9 +1,6 @@
 
 import React from 'react';
 
-// const textToRemove = ""
-// const removeText = ()
-
 export default function Text({date,title,explanation}){
     return(
         <div className='allText'>
